@@ -664,7 +664,18 @@ function WallOfLove() {
         })}
       </div>
 
-      <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+      <div className="mt-12 flex justify-center">
+        <a
+          href="https://share.google/QCNAhYpNvCCAvEHKB"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-xl border-2 border-brand bg-white px-6 py-3.5 text-sm font-semibold text-brand transition hover:bg-brand-tint hover:shadow-brand-sm"
+        >
+          ⭐ Voir tous nos avis Google
+        </a>
+      </div>
+
+      <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
         <div className="flex items-center gap-2">
           <div className="flex gap-0.5">
             {Array.from({ length: 5 }).map((_, idx) => (

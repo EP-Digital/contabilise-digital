@@ -514,7 +514,7 @@ function WallOfLove() {
 
   return (
     <Section
-      bg="alt"
+      bg="soft"
       label="Témoignages"
       title="Ce que disent nos clients"
       subtitle="Des avis Google authentiques recueillis auprès de TPE et entrepreneurs accompagnés par EP Digital X."

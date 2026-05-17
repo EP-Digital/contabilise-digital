@@ -142,17 +142,16 @@ function Section({
   children,
 }: {
   id?: string;
-  bg?: "white" | "alt";
+  bg?: "white" | "alt" | "soft";
   label: string;
   title: React.ReactNode;
   subtitle: string;
   children: React.ReactNode;
 }) {
+  const bgClass =
+    bg === "alt" ? "bg-surface-alt" : bg === "soft" ? "bg-[#FAFBFC]" : "bg-white";
   return (
-    <section
-      id={id}
-      className={`py-24 ${bg === "alt" ? "bg-surface-alt" : "bg-white"}`}
-    >
+    <section id={id} className={`py-24 ${bgClass}`}>
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="max-w-2xl mb-14">
           <p className="text-[12px] font-semibold uppercase tracking-wider text-brand">{label}</p>
@@ -515,7 +514,7 @@ function WallOfLove() {
 
   return (
     <Section
-      bg="alt"
+      bg="soft"
       label="Témoignages"
       title="Ce que disent nos clients"
       subtitle="Des avis Google authentiques recueillis auprès de TPE et entrepreneurs accompagnés par EP Digital X."

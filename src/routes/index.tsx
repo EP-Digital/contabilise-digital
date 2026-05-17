@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Logo } from "@/components/Logo";
+import procleanImg from "@/assets/proclean-stj.png";
+import alloNuisibleImg from "@/assets/allo-nuisible.png";
+import lesBonsBiensImg from "@/assets/les-bons-biens.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -308,6 +311,7 @@ function References() {
       name: "Proclean STJ",
       site: "proclean-stj.fr",
       sector: "Nettoyage professionnel · Normandie",
+      image: procleanImg,
       stats: [
         ["Délai de résultats", "2 mois"],
         ["Appels entrants", "+65% en 8 semaines"],
@@ -319,6 +323,7 @@ function References() {
       name: "Les Bons Biens",
       site: "lesbonsbiens.com",
       sector: "Immobilier · Référencement local",
+      image: lesBonsBiensImg,
       stats: [
         ["Visibilité Google Maps", "Top 3 local"],
         ["Trafic organique", "+80% en 4 mois"],
@@ -330,6 +335,7 @@ function References() {
       name: "Allo Nuisible Caen",
       site: "allo-nuisible-caen.fr",
       sector: "Dératisation · Services urgents",
+      image: alloNuisibleImg,
       stats: [
         ["Positionnement", "N°1 sur \"Nuisibles Caen\""],
         ["Demandes en ligne", "+120% en 6 mois"],
@@ -348,26 +354,40 @@ function References() {
         {cases.map((c) => (
           <article
             key={c.name}
-            className="card-hover rounded-2xl bg-white border border-[#E8ECFF] p-7"
+            className="card-hover rounded-2xl bg-white border border-[#E8ECFF] overflow-hidden flex flex-col"
           >
-            <span className="inline-flex items-center rounded-full bg-brand-soft px-3 py-1 text-[11px] font-semibold text-brand uppercase tracking-wider">
-              {c.tag}
-            </span>
-            <h3 className="mt-5 text-xl font-bold text-ink">{c.name}</h3>
-            <p className="mt-1 text-sm text-brand font-medium">{c.site}</p>
-            <p className="mt-1 text-sm text-slate">{c.sector}</p>
-            <div className="mt-6 pt-6 border-t border-[#E8ECFF] space-y-3.5">
-              {c.stats.map(([label, value]) => (
-                <div key={label} className="flex items-center justify-between gap-4">
-                  <span className="text-[13px] text-slate">{label}</span>
-                  <span
-                    className="text-[13px] font-bold px-2.5 py-1 rounded-md"
-                    style={{ background: "var(--success-bg)", color: "var(--success)" }}
-                  >
-                    {value}
-                  </span>
-                </div>
-              ))}
+            <div className="relative">
+              <img
+                src={c.image}
+                alt={`Site web ${c.name} réalisé par EP Digital X`}
+                loading="lazy"
+                className="w-full aspect-[16/10] object-cover object-top"
+              />
+              <div className="absolute bottom-3 left-3 right-3 inline-flex items-center gap-2 rounded-lg bg-white/95 backdrop-blur px-3 py-2 text-[12px] font-semibold text-ink shadow-brand-sm">
+                <span className="text-success">✅</span>
+                Site web réalisé par EP Digital X
+              </div>
+            </div>
+            <div className="p-7 flex-1 flex flex-col">
+              <span className="inline-flex self-start items-center rounded-full bg-brand-soft px-3 py-1 text-[11px] font-semibold text-brand uppercase tracking-wider">
+                {c.tag}
+              </span>
+              <h3 className="mt-5 text-xl font-bold text-ink">{c.name}</h3>
+              <p className="mt-1 text-sm text-brand font-medium">{c.site}</p>
+              <p className="mt-1 text-sm text-slate">{c.sector}</p>
+              <div className="mt-6 pt-6 border-t border-[#E8ECFF] space-y-3.5">
+                {c.stats.map(([label, value]) => (
+                  <div key={label} className="flex items-center justify-between gap-4">
+                    <span className="text-[13px] text-slate">{label}</span>
+                    <span
+                      className="text-[13px] font-bold px-2.5 py-1 rounded-md"
+                      style={{ background: "var(--success-bg)", color: "var(--success)" }}
+                    >
+                      {value}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </article>
         ))}

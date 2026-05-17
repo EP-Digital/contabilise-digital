@@ -311,6 +311,7 @@ function References() {
       name: "Proclean STJ",
       site: "proclean-stj.fr",
       sector: "Nettoyage professionnel · Normandie",
+      image: procleanImg,
       stats: [
         ["Délai de résultats", "2 mois"],
         ["Appels entrants", "+65% en 8 semaines"],
@@ -322,6 +323,7 @@ function References() {
       name: "Les Bons Biens",
       site: "lesbonsbiens.com",
       sector: "Immobilier · Référencement local",
+      image: lesBonsBiensImg,
       stats: [
         ["Visibilité Google Maps", "Top 3 local"],
         ["Trafic organique", "+80% en 4 mois"],
@@ -333,6 +335,7 @@ function References() {
       name: "Allo Nuisible Caen",
       site: "allo-nuisible-caen.fr",
       sector: "Dératisation · Services urgents",
+      image: alloNuisibleImg,
       stats: [
         ["Positionnement", "N°1 sur \"Nuisibles Caen\""],
         ["Demandes en ligne", "+120% en 6 mois"],

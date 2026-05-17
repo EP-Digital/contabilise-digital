@@ -588,37 +588,16 @@ function WallOfLove() {
                 className="card-hover mb-6 break-inside-avoid rounded-2xl bg-white border border-[#E8ECFF] overflow-hidden animate-fade-up"
                 style={animStyle}
               >
-                <a
-                  href={`https://www.youtube.com/watch?v=${t.videoId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block"
-                  aria-label={`Voir le témoignage vidéo de ${t.name}`}
-                >
-                  <img
-                    src={`https://img.youtube.com/vi/${t.videoId}/hqdefault.jpg`}
-                    alt={`Témoignage vidéo — ${t.name}`}
+                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${t.videoId}?rel=0&modestbranding=1`}
+                    title={`Témoignage vidéo — ${t.name}`}
                     loading="lazy"
-                    className="w-full aspect-video object-cover"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full border-0"
                   />
-                  <div
-                    className="absolute inset-0 transition"
-                    style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%)" }}
-                  />
-                  <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-md bg-[#FF0000] px-2.5 py-1 text-[11px] font-bold text-white shadow-brand-sm">
-                    ▶ Vidéo
-                  </span>
-                  <span
-                    className="absolute inset-0 flex items-center justify-center"
-                    aria-hidden
-                  >
-                    <span className="h-16 w-16 rounded-full bg-white/95 flex items-center justify-center shadow-brand transition group-hover:scale-110">
-                      <svg viewBox="0 0 24 24" className="h-7 w-7 ml-1 fill-[#FF0000]">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </span>
-                  </span>
-                </a>
+                </div>
                 <div className="p-5">
                   {stars}
                   <p className="mt-3 text-sm font-bold text-ink leading-tight">{t.name}</p>

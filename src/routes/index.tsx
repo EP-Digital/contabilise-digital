@@ -640,6 +640,7 @@ function Index() {
       <Remuneration />
       <References />
       <WhyUs />
+      <WallOfLove />
       <FinalCTA />
       <Footer />
     </main>

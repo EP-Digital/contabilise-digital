@@ -445,6 +445,144 @@ function WhyUs() {
   );
 }
 
+function WallOfLove() {
+  const testimonials = [
+    {
+      name: "Gregory Polosecki",
+      meta: "Local Guide · 16 avis",
+      initial: "G",
+      color: "#0740F9",
+      text: "J'ai eu une expérience exceptionnelle avec EP Digital en tant que client. Le délai de livraison a toujours été respecté, ce qui est essentiel pour moi. De plus, l'écoute et la réactivité des responsables, Daniel Ferras et Géraldine Smorloz, sont tout simplement impressionnantes. Ils sont toujours disponibles pour répondre à mes questions et traiter mes besoins. Enfin, le rapport qualité-prix est excellent et équitable, sans abus. Je recommande chaleureusement EP Digital pour leurs services de qualité et leur engagement envers leurs clients.",
+      date: "Novembre 2023",
+    },
+    {
+      name: "Nelly Chaillot",
+      meta: "6 avis",
+      initial: "N",
+      color: "#E84393",
+      text: "EP Digital, un Duo de choc à l'écoute qui aime partager son savoir avec générosité ! Des conseils avisés pour une meilleure visibilité sur le web. Merci Géraldine et Daniel. 🙏",
+      date: "Mai 2022",
+    },
+    {
+      name: "Cryo Danjou",
+      meta: "6 avis · 1 photo",
+      initial: "C",
+      color: "#2DD4A8",
+      text: "Merci à EP Digital pour leur remarquable travail dans la réalisation de notre site internet CryoDanjou à Caen. Leur expertise en création de site web a été remarquable. Ils ont rapidement compris notre univers traduisant parfaitement notre image de marque. Recommandation incontestable pour leur professionnalisme et leur engagement envers la satisfaction client !",
+      date: "Mars 2024",
+    },
+    {
+      name: "Shanel Roger-Lombard",
+      meta: "4 avis",
+      initial: "S",
+      color: "#F79009",
+      text: "J'ai récemment collaboré avec l'agence EP DIGITAL pour la création de mon site web et je suis extrêmement satisfait des résultats. Dès le premier contact, l'équipe s'est montrée professionnelle, réactive et à l'écoute de mes besoins. Ils ont su transformer mes idées en un site web attractif, moderne et parfaitement adapté à ma stratégie de communication. Leur expertise en marketing digital est indéniable !",
+      date: "Février 2025",
+    },
+    {
+      name: "Ayoub",
+      meta: "1 avis",
+      initial: "A",
+      color: "#0740F9",
+      text: "Une excellente expérience avec EP Digital ! L'équipe est ultra professionnelle, réactive et force de proposition. Grâce à leur expertise, mon site web a été optimisé et notre visibilité en ligne augmente. Leur approche personnalisée et leur souci du détail font toute la différence. Si vous cherchez une agence web sérieuse et efficace à Caen, je recommande EP Digital les yeux fermés !",
+      date: "Février 2025",
+    },
+    {
+      name: "Marie Lemonnier",
+      meta: "3 avis",
+      initial: "M",
+      color: "#12B76A",
+      text: "Super expérience avec Géraldine, une femme très professionnelle pour la création de mon site internet ! Merci à son agence de Caen.",
+      date: "Février 2025",
+    },
+    {
+      name: "Olivier Boullen",
+      meta: "Local Guide · 12 avis",
+      initial: "O",
+      color: "#E84393",
+      text: "Je recommande EP digital, une agence web comme on les aime. Ils nous ont accompagnés dans la création de notre site internet dans une ambiance professionnelle et décontractée. Je remercie tout particulièrement Daniel toujours disponible, toujours à l'écoute et de très bons conseils pour la gestion de notre site internet.",
+      date: "Mars 2025",
+    },
+    {
+      name: "Veragrow Dev",
+      meta: "1 avis",
+      initial: "V",
+      color: "#7B9FFF",
+      text: "Un grand merci à EP Digital pour leur accompagnement sur le référencement naturel et le web design. Grâce à leur intervention, nous avons nettement gagné en visibilité et amélioré notre taux de conversion. Merci à Daniel, dont l'écoute, la disponibilité et l'expertise nous ont permis de monter en compétences en webmarketing. Nous recommandons vivement cette agence web !",
+      date: "Mai 2025",
+    },
+  ];
+
+  return (
+    <Section
+      bg="alt"
+      label="Mur de témoignages"
+      title="Ce que disent nos clients"
+      subtitle="Des avis Google authentiques recueillis auprès de TPE et entrepreneurs accompagnés par EP Digital X."
+    >
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+        {testimonials.map((t, i) => (
+          <figure
+            key={t.name}
+            className="card-hover mb-6 break-inside-avoid rounded-2xl bg-white border border-[#E8ECFF] p-6 animate-fade-up"
+            style={{ animationDelay: `${Math.min(i * 0.05, 0.4)}s` }}
+          >
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-3">
+                <div
+                  className="h-10 w-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
+                  style={{ background: t.color }}
+                >
+                  {t.initial}
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-ink leading-tight">{t.name}</p>
+                  <p className="text-[12px] text-slate">{t.meta}</p>
+                </div>
+              </div>
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5 flex-none"
+                aria-label="Avis Google"
+              >
+                <path fill="#4285F4" d="M22.5 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.22-4.74 3.22-8.09Z" />
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.99.66-2.25 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z" />
+                <path fill="#FBBC05" d="M5.84 14.11A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.45.34-2.11V7.05H2.18A11 11 0 0 0 1 12c0 1.78.43 3.46 1.18 4.95l3.66-2.84Z" />
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38Z" />
+              </svg>
+            </div>
+            <div className="mt-4 flex gap-0.5" aria-label="5 étoiles sur 5">
+              {Array.from({ length: 5 }).map((_, idx) => (
+                <svg key={idx} viewBox="0 0 20 20" className="h-4 w-4 fill-[#F79009]">
+                  <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1 1 5.8L10 14.77l-5.21 2.74 1-5.8-4.21-4.1 5.82-.85L10 1.5Z" />
+                </svg>
+              ))}
+            </div>
+            <blockquote className="mt-4 text-[14.5px] text-ink leading-relaxed">
+              {t.text}
+            </blockquote>
+            <figcaption className="mt-4 text-[12px] text-slate">Visité en {t.date}</figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+        <div className="flex items-center gap-2">
+          <div className="flex gap-0.5">
+            {Array.from({ length: 5 }).map((_, idx) => (
+              <svg key={idx} viewBox="0 0 20 20" className="h-5 w-5 fill-[#F79009]">
+                <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1 1 5.8L10 14.77l-5.21 2.74 1-5.8-4.21-4.1 5.82-.85L10 1.5Z" />
+              </svg>
+            ))}
+          </div>
+          <span className="text-sm font-semibold text-ink">5,0 sur Google</span>
+          <span className="text-sm text-slate">· des dizaines d'avis vérifiés</span>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 function FinalCTA() {
   return (
     <section className="relative overflow-hidden bg-ink py-28">
@@ -502,6 +640,7 @@ function Index() {
       <Remuneration />
       <References />
       <WhyUs />
+      <WallOfLove />
       <FinalCTA />
       <Footer />
     </main>

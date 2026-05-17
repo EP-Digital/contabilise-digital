@@ -444,9 +444,27 @@ function WhyUs() {
   );
 }
 
+type Testimonial =
+  | {
+      type: "text";
+      name: string;
+      meta: string;
+      initial: string;
+      color: string;
+      text: string;
+      date: string;
+    }
+  | {
+      type: "video";
+      videoId: string;
+      name: string;
+      activity: string;
+    };
+
 function WallOfLove() {
-  const testimonials = [
+  const textReviews: Testimonial[] = [
     {
+      type: "text",
       name: "Gregory Polosecki",
       meta: "Local Guide · 16 avis",
       initial: "G",
@@ -455,6 +473,7 @@ function WallOfLove() {
       date: "Novembre 2023",
     },
     {
+      type: "text",
       name: "Nelly Chaillot",
       meta: "6 avis",
       initial: "N",
@@ -463,6 +482,7 @@ function WallOfLove() {
       date: "Mai 2022",
     },
     {
+      type: "text",
       name: "Cryo Danjou",
       meta: "6 avis · 1 photo",
       initial: "C",
@@ -471,6 +491,7 @@ function WallOfLove() {
       date: "Mars 2024",
     },
     {
+      type: "text",
       name: "Shanel Roger-Lombard",
       meta: "4 avis",
       initial: "S",
@@ -479,6 +500,7 @@ function WallOfLove() {
       date: "Février 2025",
     },
     {
+      type: "text",
       name: "Ayoub",
       meta: "1 avis",
       initial: "A",
@@ -487,6 +509,7 @@ function WallOfLove() {
       date: "Février 2025",
     },
     {
+      type: "text",
       name: "Marie Lemonnier",
       meta: "3 avis",
       initial: "M",
@@ -495,6 +518,7 @@ function WallOfLove() {
       date: "Février 2025",
     },
     {
+      type: "text",
       name: "Olivier Boullen",
       meta: "Local Guide · 12 avis",
       initial: "O",
@@ -503,6 +527,7 @@ function WallOfLove() {
       date: "Mars 2025",
     },
     {
+      type: "text",
       name: "Veragrow Dev",
       meta: "1 avis",
       initial: "V",
@@ -512,57 +537,131 @@ function WallOfLove() {
     },
   ];
 
+  const videoReviews: Testimonial[] = [
+    { type: "video", videoId: "oEh0sTJnbkU", name: "Les Bons Biens", activity: "Site e-commerce" },
+    { type: "video", videoId: "ad3vIFlBa8o", name: "Julien — OKOLO", activity: "Création de site web" },
+    { type: "video", videoId: "VmoRPkJ90mw", name: "Carla & Jana — LBB", activity: "Site vitrine" },
+    { type: "video", videoId: "pnTX4G9IMVU", name: "Quentin — Vagabondage Dégustation", activity: "Formation Google My Business" },
+    { type: "video", videoId: "t6WE_F3S2Go", name: "Formation GMB EP Digital", activity: "Formation digitale" },
+  ];
+
+  // Interleave videos every ~2-3 cards for a balanced masonry mix
+  const testimonials: Testimonial[] = [];
+  let vi = 0;
+  let ti = 0;
+  const pattern = [0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1];
+  for (const p of pattern) {
+    if (p === 1 && vi < videoReviews.length) {
+      testimonials.push(videoReviews[vi++]);
+    } else if (ti < textReviews.length) {
+      testimonials.push(textReviews[ti++]);
+    }
+  }
+  while (vi < videoReviews.length) testimonials.push(videoReviews[vi++]);
+  while (ti < textReviews.length) testimonials.push(textReviews[ti++]);
+
+  const stars = (
+    <div className="flex gap-0.5" aria-label="5 étoiles sur 5">
+      {Array.from({ length: 5 }).map((_, idx) => (
+        <svg key={idx} viewBox="0 0 20 20" className="h-4 w-4 fill-[#F79009]">
+          <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1 1 5.8L10 14.77l-5.21 2.74 1-5.8-4.21-4.1 5.82-.85L10 1.5Z" />
+        </svg>
+      ))}
+    </div>
+  );
+
   return (
     <Section
       bg="soft"
       label="Témoignages"
-      title="Ce que disent nos clients"
-      subtitle="Des avis Google authentiques recueillis auprès de TPE et entrepreneurs accompagnés par EP Digital X."
+      title="Ils nous font confiance"
+      subtitle="Découvrez leurs témoignages en vidéo et par écrit."
     >
       <div className="columns-1 md:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
-        {testimonials.map((t, i) => (
-          <figure
-            key={t.name}
-            className="card-hover mb-6 break-inside-avoid rounded-2xl bg-white border border-[#E8ECFF] p-6 animate-fade-up"
-            style={{ animationDelay: `${Math.min(i * 0.05, 0.4)}s` }}
-          >
-            <div className="flex items-start justify-between">
-              <div className="flex items-center gap-3">
-                <div
-                  className="h-10 w-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
-                  style={{ background: t.color }}
-                >
-                  {t.initial}
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-ink leading-tight">{t.name}</p>
-                  <p className="text-[12px] text-slate">{t.meta}</p>
-                </div>
-              </div>
-              <svg
-                viewBox="0 0 24 24"
-                className="h-5 w-5 flex-none"
-                aria-label="Avis Google"
+        {testimonials.map((t, i) => {
+          const animStyle = { animationDelay: `${Math.min(i * 0.05, 0.4)}s` };
+
+          if (t.type === "video") {
+            return (
+              <figure
+                key={`v-${t.videoId}`}
+                className="card-hover mb-6 break-inside-avoid rounded-2xl bg-white border border-[#E8ECFF] overflow-hidden animate-fade-up"
+                style={animStyle}
               >
-                <path fill="#4285F4" d="M22.5 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.22-4.74 3.22-8.09Z" />
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.99.66-2.25 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z" />
-                <path fill="#FBBC05" d="M5.84 14.11A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.45.34-2.11V7.05H2.18A11 11 0 0 0 1 12c0 1.78.43 3.46 1.18 4.95l3.66-2.84Z" />
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38Z" />
-              </svg>
-            </div>
-            <div className="mt-4 flex gap-0.5" aria-label="5 étoiles sur 5">
-              {Array.from({ length: 5 }).map((_, idx) => (
-                <svg key={idx} viewBox="0 0 20 20" className="h-4 w-4 fill-[#F79009]">
-                  <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1 1 5.8L10 14.77l-5.21 2.74 1-5.8-4.21-4.1 5.82-.85L10 1.5Z" />
+                <a
+                  href={`https://www.youtube.com/watch?v=${t.videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block"
+                  aria-label={`Voir le témoignage vidéo de ${t.name}`}
+                >
+                  <img
+                    src={`https://img.youtube.com/vi/${t.videoId}/hqdefault.jpg`}
+                    alt={`Témoignage vidéo — ${t.name}`}
+                    loading="lazy"
+                    className="w-full aspect-video object-cover"
+                  />
+                  <div
+                    className="absolute inset-0 transition"
+                    style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%)" }}
+                  />
+                  <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-md bg-[#FF0000] px-2.5 py-1 text-[11px] font-bold text-white shadow-brand-sm">
+                    ▶ Vidéo
+                  </span>
+                  <span
+                    className="absolute inset-0 flex items-center justify-center"
+                    aria-hidden
+                  >
+                    <span className="h-16 w-16 rounded-full bg-white/95 flex items-center justify-center shadow-brand transition group-hover:scale-110">
+                      <svg viewBox="0 0 24 24" className="h-7 w-7 ml-1 fill-[#FF0000]">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </span>
+                  </span>
+                </a>
+                <div className="p-5">
+                  {stars}
+                  <p className="mt-3 text-sm font-bold text-ink leading-tight">{t.name}</p>
+                  <p className="mt-0.5 text-[12px] text-slate">{t.activity}</p>
+                </div>
+              </figure>
+            );
+          }
+
+          return (
+            <figure
+              key={`t-${t.name}`}
+              className="card-hover mb-6 break-inside-avoid rounded-2xl bg-white border border-[#E8ECFF] p-6 animate-fade-up"
+              style={animStyle}
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-3">
+                  <div
+                    className="h-10 w-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
+                    style={{ background: t.color }}
+                  >
+                    {t.initial}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-ink leading-tight">{t.name}</p>
+                    <p className="text-[12px] text-slate">{t.meta}</p>
+                  </div>
+                </div>
+                <svg viewBox="0 0 24 24" className="h-5 w-5 flex-none" aria-label="Avis Google">
+                  <path fill="#4285F4" d="M22.5 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.22-4.74 3.22-8.09Z" />
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.99.66-2.25 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z" />
+                  <path fill="#FBBC05" d="M5.84 14.11A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.45.34-2.11V7.05H2.18A11 11 0 0 0 1 12c0 1.78.43 3.46 1.18 4.95l3.66-2.84Z" />
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38Z" />
                 </svg>
-              ))}
-            </div>
-            <blockquote className="mt-4 text-[14.5px] text-ink leading-relaxed">
-              {t.text}
-            </blockquote>
-            <figcaption className="mt-4 text-[12px] text-slate">Visité en {t.date}</figcaption>
-          </figure>
-        ))}
+              </div>
+              <div className="mt-4">{stars}</div>
+              <blockquote className="mt-4 text-[14.5px] text-ink leading-relaxed">
+                {t.text}
+              </blockquote>
+              <figcaption className="mt-4 text-[12px] text-slate">Visité en {t.date}</figcaption>
+            </figure>
+          );
+        })}
       </div>
 
       <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">

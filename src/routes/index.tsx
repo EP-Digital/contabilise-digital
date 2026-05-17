@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Logo } from "@/components/Logo";
 import procleanImg from "@/assets/proclean-stj.png";
 import alloNuisibleImg from "@/assets/allo-nuisible.png";

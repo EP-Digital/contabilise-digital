@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Logo } from "@/components/Logo";
 import procleanImg from "@/assets/proclean-stj.png";
 import alloNuisibleImg from "@/assets/allo-nuisible.png";
@@ -464,9 +464,60 @@ type Testimonial =
 
 function VideoEmbed({ videoId, name }: { videoId: string; name: string }) {
   const [playing, setPlaying] = useState(false);
+  const [unavailable, setUnavailable] = useState(false);
+  const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(
+      `https://www.youtube.com/oembed?url=${encodeURIComponent(watchUrl)}&format=json`,
+    )
+      .then((r) => {
+        if (!cancelled && !r.ok) setUnavailable(true);
+      })
+      .catch(() => {
+        if (!cancelled) setUnavailable(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [watchUrl]);
+
+  const thumb = (
+    <>
+      <img
+        src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+        alt={`Témoignage vidéo — ${name}`}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <span
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%)" }}
+      />
+      <span className="absolute inset-0 flex items-center justify-center" aria-hidden>
+        <span className="h-16 w-16 rounded-full bg-white/95 flex items-center justify-center shadow-brand transition group-hover:scale-110">
+          <svg viewBox="0 0 24 24" className="h-7 w-7 ml-1 fill-[#FF0000]">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </span>
+      </span>
+    </>
+  );
+
   return (
     <div className="relative w-full bg-black" style={{ paddingBottom: "56.25%" }}>
-      {playing ? (
+      {unavailable ? (
+        <a
+          href={watchUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group absolute inset-0 block overflow-hidden"
+          aria-label={`Voir le témoignage vidéo de ${name} sur YouTube`}
+        >
+          {thumb}
+        </a>
+      ) : playing ? (
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&autoplay=1`}
           title={`Témoignage vidéo — ${name}`}
@@ -482,23 +533,7 @@ function VideoEmbed({ videoId, name }: { videoId: string; name: string }) {
           className="group absolute inset-0 block w-full overflow-hidden"
           aria-label={`Lire le témoignage vidéo de ${name}`}
         >
-          <img
-            src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-            alt={`Témoignage vidéo — ${name}`}
-            loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <span
-            className="absolute inset-0"
-            style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%)" }}
-          />
-          <span className="absolute inset-0 flex items-center justify-center" aria-hidden>
-            <span className="h-16 w-16 rounded-full bg-white/95 flex items-center justify-center shadow-brand transition group-hover:scale-110">
-              <svg viewBox="0 0 24 24" className="h-7 w-7 ml-1 fill-[#FF0000]">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </span>
-          </span>
+          {thumb}
         </button>
       )}
     </div>

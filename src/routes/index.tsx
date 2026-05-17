@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { Logo } from "@/components/Logo";
 import procleanImg from "@/assets/proclean-stj.png";
 import alloNuisibleImg from "@/assets/allo-nuisible.png";
@@ -461,6 +462,49 @@ type Testimonial =
       activity: string;
     };
 
+function VideoEmbed({ videoId, name }: { videoId: string; name: string }) {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <div className="relative w-full bg-black" style={{ paddingBottom: "56.25%" }}>
+      {playing ? (
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&autoplay=1`}
+          title={`Témoignage vidéo — ${name}`}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          className="absolute inset-0 h-full w-full border-0"
+        />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setPlaying(true)}
+          className="group absolute inset-0 block w-full overflow-hidden"
+          aria-label={`Lire le témoignage vidéo de ${name}`}
+        >
+          <img
+            src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+            alt={`Témoignage vidéo — ${name}`}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <span
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%)" }}
+          />
+          <span className="absolute inset-0 flex items-center justify-center" aria-hidden>
+            <span className="h-16 w-16 rounded-full bg-white/95 flex items-center justify-center shadow-brand transition group-hover:scale-110">
+              <svg viewBox="0 0 24 24" className="h-7 w-7 ml-1 fill-[#FF0000]">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}
+
 function WallOfLove() {
   const textReviews: Testimonial[] = [
     {
@@ -588,16 +632,7 @@ function WallOfLove() {
                 className="card-hover mb-6 break-inside-avoid rounded-2xl bg-white border border-[#E8ECFF] overflow-hidden animate-fade-up"
                 style={animStyle}
               >
-                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                  <iframe
-                    src={`https://www.youtube-nocookie.com/embed/${t.videoId}?rel=0&modestbranding=1`}
-                    title={`Témoignage vidéo — ${t.name}`}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="absolute inset-0 h-full w-full border-0"
-                  />
-                </div>
+                <VideoEmbed videoId={t.videoId} name={t.name} />
                 <div className="p-5">
                   {stars}
                   <p className="mt-3 text-sm font-bold text-ink leading-tight">{t.name}</p>

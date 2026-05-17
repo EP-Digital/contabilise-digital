@@ -747,6 +747,72 @@ function WallOfLove() {
   );
 }
 
+function FAQ() {
+  const items = [
+    {
+      q: "Est-ce que je dois m'occuper du suivi des clients que je vous envoie ?",
+      a: "Non, aucunement. Votre rôle s'arrête à la recommandation. Nous prenons en charge l'ensemble du processus : audit, devis, réalisation, suivi. Vous n'avez rien à gérer.",
+    },
+    {
+      q: "Combien puis-je espérer gagner avec ce partenariat ?",
+      a: "La rémunération varie selon les missions signées. En moyenne, nos partenaires actifs génèrent entre 500 € et 2 000 € par mois selon le volume de clients recommandés. Tout est transparent et contractualisé.",
+    },
+    {
+      q: "Y a-t-il un engagement ou une exclusivité ?",
+      a: "Aucun contrat d'exclusivité, aucun engagement de durée. Vous recommandez quand vous le souhaitez, à qui vous le souhaitez. La relation reste simple et sans contrainte.",
+    },
+    {
+      q: "Quels types de clients peuvent bénéficier de vos services ?",
+      a: "Nous travaillons exclusivement avec des TPE et PME locales : artisans, commerçants, professions libérales, restaurants, etc. Si votre client a besoin d'un site web, d'être trouvé sur Google ou d'attirer plus de clients en ligne, nous pouvons l'aider.",
+    },
+    {
+      q: "En combien de temps un site est-il livré ?",
+      a: "Nos sites sont livrés en 4 à 6 semaines à partir de la validation du devis. Nous respectons les délais annoncés — c'est un engagement que nous prenons auprès de chaque client.",
+    },
+    {
+      q: "Comment se passe le premier contact avec mon client ?",
+      a: "Il vous suffit de nous transmettre le nom et le contact de votre client (email ou téléphone). Nous prenons contact dans les 48h pour un audit gratuit et un devis sans engagement.",
+    },
+    {
+      q: "Est-ce que vous travaillez uniquement sur Caen ?",
+      a: "Nous sommes basés à Caen mais intervenons sur toute la Normandie et au-delà pour les projets de création de site web et référencement local. N'hésitez pas à nous soumettre un projet où qu'il soit.",
+    },
+    {
+      q: "Comment devenir partenaire ?",
+      a: "C'est simple : réservez un échange de 20 minutes avec nous via le bouton en haut de page. On vous explique tout, on répond à vos questions, et si ça vous convient, on démarre immédiatement.",
+    },
+  ];
+
+  return (
+    <Section
+      id="faq"
+      bg="soft"
+      label="FAQ"
+      title={<>Vos questions, nos réponses</>}
+      subtitle="Tout ce que vous devez savoir avant de devenir partenaire."
+    >
+      <div className="mx-auto max-w-3xl">
+        <Accordion type="single" collapsible className="space-y-3">
+          {items.map((item, i) => (
+            <AccordionItem
+              key={i}
+              value={`item-${i}`}
+              className="rounded-xl border border-border bg-white px-5 shadow-brand-sm transition hover:border-brand/40"
+            >
+              <AccordionTrigger className="py-5 text-left text-[16px] font-semibold text-ink hover:no-underline">
+                {item.q}
+              </AccordionTrigger>
+              <AccordionContent className="pb-5 text-[15px] leading-relaxed text-slate">
+                {item.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </Section>
+  );
+}
+
 function FinalCTA() {
   return (
     <section className="relative overflow-hidden bg-ink py-28">

@@ -871,6 +871,7 @@ function Index() {
       <References />
       <WhyUs />
       <WallOfLove />
+      <FAQ />
       <FinalCTA />
       <Footer />
     </main>

@@ -589,16 +589,7 @@ function WallOfLove() {
                 className="card-hover mb-6 break-inside-avoid rounded-2xl bg-white border border-[#E8ECFF] overflow-hidden animate-fade-up"
                 style={animStyle}
               >
-                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                  <iframe
-                    src={`https://www.youtube-nocookie.com/embed/${t.videoId}?rel=0&modestbranding=1`}
-                    title={`Témoignage vidéo — ${t.name}`}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="absolute inset-0 h-full w-full border-0"
-                  />
-                </div>
+                <VideoEmbed videoId={t.videoId} name={t.name} />
                 <div className="p-5">
                   {stars}
                   <p className="mt-3 text-sm font-bold text-ink leading-tight">{t.name}</p>

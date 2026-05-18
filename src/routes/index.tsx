@@ -423,8 +423,7 @@ function References() {
                 {c.stats.map(([label, value]) => (
                   <div key={label} className="flex items-center justify-between gap-4">
                     <span className="text-[13px] text-slate">{label}</span>
-                    <span className="inline-flex items-center gap-1.5 text-[13px] font-bold" style={{ color: c.accent.value }}>
-                      <span style={{ color: "var(--success)" }}>✓</span>
+                    <span className="text-[13px] font-bold text-right" style={{ color: "#111827" }}>
                       {value}
                     </span>
                   </div>

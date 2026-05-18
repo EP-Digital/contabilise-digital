@@ -350,6 +350,7 @@ function References() {
       site: "proclean-stj.fr",
       sector: "Nettoyage professionnel · Normandie",
       image: procleanImg,
+      accent: { badgeBg: "#EEF2FF", badgeText: "#3B48E0", value: "#3B48E0" },
       stats: [
         ["Délai de résultats", "2 mois"],
         ["Appels entrants", "+65% en 8 semaines"],
@@ -362,6 +363,7 @@ function References() {
       site: "lesbonsbiens.com",
       sector: "Immobilier · Référencement local",
       image: lesBonsBiensImg,
+      accent: { badgeBg: "#F3F0FF", badgeText: "#7C3AED", value: "#7C3AED" },
       stats: [
         ["Visibilité Google Maps", "Top 3 local"],
         ["Trafic organique", "+80% en 4 mois"],
@@ -374,6 +376,7 @@ function References() {
       site: "allo-nuisible-caen.fr",
       sector: "Dératisation · Services urgents",
       image: alloNuisibleImg,
+      accent: { badgeBg: "#FFF7ED", badgeText: "#EA580C", value: "#EA580C" },
       stats: [
         ["Positionnement", "N°1 sur \"Nuisibles Caen\""],
         ["Demandes en ligne", "+120% en 6 mois"],

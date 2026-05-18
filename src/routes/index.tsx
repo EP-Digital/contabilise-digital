@@ -350,6 +350,7 @@ function References() {
       site: "proclean-stj.fr",
       sector: "Nettoyage professionnel · Normandie",
       image: procleanImg,
+      accent: { badgeBg: "#EEF2FF", badgeText: "#3B48E0", value: "#3B48E0" },
       stats: [
         ["Délai de résultats", "2 mois"],
         ["Appels entrants", "+65% en 8 semaines"],
@@ -362,6 +363,7 @@ function References() {
       site: "lesbonsbiens.com",
       sector: "Immobilier · Référencement local",
       image: lesBonsBiensImg,
+      accent: { badgeBg: "#F3F0FF", badgeText: "#7C3AED", value: "#7C3AED" },
       stats: [
         ["Visibilité Google Maps", "Top 3 local"],
         ["Trafic organique", "+80% en 4 mois"],
@@ -374,6 +376,7 @@ function References() {
       site: "allo-nuisible-caen.fr",
       sector: "Dératisation · Services urgents",
       image: alloNuisibleImg,
+      accent: { badgeBg: "#FFF7ED", badgeText: "#EA580C", value: "#EA580C" },
       stats: [
         ["Positionnement", "N°1 sur \"Nuisibles Caen\""],
         ["Demandes en ligne", "+120% en 6 mois"],
@@ -407,20 +410,21 @@ function References() {
               </div>
             </div>
             <div className="p-7 flex-1 flex flex-col">
-              <span className="inline-flex self-start items-center rounded-full bg-brand-soft px-3 py-1 text-[11px] font-semibold text-brand uppercase tracking-wider">
+              <span
+                className="inline-flex self-start items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wider"
+                style={{ background: c.accent.badgeBg, color: c.accent.badgeText }}
+              >
                 {c.tag}
               </span>
               <h3 className="mt-5 text-xl font-bold text-ink">{c.name}</h3>
-              <p className="mt-1 text-sm text-brand font-medium">{c.site}</p>
+              <p className="mt-1 text-sm font-medium underline underline-offset-2" style={{ color: "#2563EB" }}>{c.site}</p>
               <p className="mt-1 text-sm text-slate">{c.sector}</p>
               <div className="mt-6 pt-6 border-t border-[#E8ECFF] space-y-3.5">
                 {c.stats.map(([label, value]) => (
                   <div key={label} className="flex items-center justify-between gap-4">
                     <span className="text-[13px] text-slate">{label}</span>
-                    <span
-                      className="text-[13px] font-bold px-2.5 py-1 rounded-md"
-                      style={{ background: "var(--success-bg)", color: "var(--success)" }}
-                    >
+                    <span className="inline-flex items-center gap-1.5 text-[13px] font-bold" style={{ color: c.accent.value }}>
+                      <span style={{ color: "var(--success)" }}>✓</span>
                       {value}
                     </span>
                   </div>

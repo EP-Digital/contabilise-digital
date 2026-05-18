@@ -230,19 +230,38 @@ function Remuneration() {
       title="Vous choisissez la formule qui vous convient"
       subtitle="Deux options pensées pour s'adapter à votre logique cabinet."
     >
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6 items-stretch">
         {/* Featured */}
-        <div className="card-hover rounded-2xl bg-brand text-white p-9 shadow-brand">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-medium">
+        <div
+          className="group relative flex flex-col rounded-2xl p-9 text-white overflow-hidden transition-all duration-300 hover:-translate-y-1"
+          style={{
+            background:
+              "linear-gradient(135deg, #1a1a4e 0%, #2d3adb 55%, #4f6ef7 100%)",
+            border: "1px solid rgba(255,255,255,0.15)",
+            boxShadow:
+              "0 30px 60px -20px rgba(15, 23, 80, 0.55), 0 0 0 1px rgba(255,255,255,0.04) inset, 0 1px 0 rgba(255,255,255,0.18) inset",
+          }}
+        >
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full opacity-40 blur-3xl"
+            style={{ background: "radial-gradient(circle, #7c92ff 0%, transparent 70%)" }}
+          />
+          <span className="relative inline-flex w-fit items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#1a1a4e] shadow-sm">
             ⭐ Le plus choisi
           </span>
-          <div className="mt-7">
-            <p className="text-5xl font-extrabold tracking-tight">150 – 300€</p>
-            <p className="mt-2 text-sm text-white/75">
-              par mission signée • versement immédiat
+          <div className="relative mt-7">
+            <p
+              className="text-5xl md:text-6xl font-extrabold tracking-tight"
+              style={{ textShadow: "0 2px 24px rgba(0,0,0,0.25)" }}
+            >
+              150€ – 300€
             </p>
+            <span className="mt-4 inline-flex items-center rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm ring-1 ring-white/15">
+              par mission signée · versement immédiat
+            </span>
           </div>
-          <ul className="mt-8 space-y-3.5">
+          <ul className="relative mt-8 space-y-3.5 flex-1">
             {[
               "Forfait fixe, prévisible et transparent",
               "Versé dès la signature du devis",
@@ -250,7 +269,10 @@ function Remuneration() {
               "Pas de conditions ni d'engagement",
             ].map((t) => (
               <li key={t} className="flex gap-3 text-[15px]">
-                <span className="flex-none mt-0.5 h-5 w-5 rounded-full bg-white text-brand flex items-center justify-center text-xs font-bold">
+                <span
+                  className="flex-none mt-0.5 h-5 w-5 rounded-full flex items-center justify-center text-xs font-bold text-[#0b1437]"
+                  style={{ background: "#4ade80", boxShadow: "0 0 12px rgba(74,222,128,0.5)" }}
+                >
                   ✓
                 </span>
                 <span className="text-white/95">{t}</span>
@@ -261,27 +283,36 @@ function Remuneration() {
             href={BOOK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-9 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-brand-soft"
+            className="relative mt-9 inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#1a1a4e] transition hover:bg-white/90"
           >
             Choisir cette option <span aria-hidden>→</span>
           </a>
         </div>
 
         {/* Standard */}
-        <div className="card-hover rounded-2xl bg-surface-alt border border-[#E8ECFF] p-9">
+        <div
+          className="group relative flex flex-col rounded-2xl p-9 transition-all duration-300 hover:-translate-y-1"
+          style={{
+            background: "linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%)",
+            border: "2px solid #e8ecff",
+            boxShadow: "0 20px 50px -15px rgba(79, 110, 247, 0.18), 0 4px 16px -4px rgba(79,110,247,0.10)",
+          }}
+        >
           <span
-            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
-            style={{ background: "var(--warn-bg)", color: "var(--warn)" }}
+            className="inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold"
+            style={{ background: "#eaf0ff", color: "#1a1a4e" }}
           >
             💡 Alternative avantageuse
           </span>
           <div className="mt-7">
-            <p className="text-5xl font-extrabold tracking-tight text-ink">Avoir services</p>
-            <p className="mt-2 text-sm text-slate">
-              réduction sur vos propres prestations EP Digital X
+            <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#1a1a4e]">
+              Profitez de nos services
+            </h3>
+            <p className="mt-3 text-sm text-slate">
+              Bénéficiez de réductions sur nos prestations EP Digital X
             </p>
           </div>
-          <ul className="mt-8 space-y-3.5">
+          <ul className="mt-8 space-y-3.5 flex-1">
             {[
               "Valeur directe sur votre site ou votre visibilité",
               "Réduction appliquée sur la prochaine prestation",
@@ -300,7 +331,8 @@ function Remuneration() {
             href={BOOK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-9 inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:brightness-110"
+            className="mt-9 inline-flex w-fit items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white transition hover:brightness-110"
+            style={{ background: "linear-gradient(135deg, #2d3adb 0%, #4f6ef7 100%)" }}
           >
             Choisir cette option <span aria-hidden>→</span>
           </a>

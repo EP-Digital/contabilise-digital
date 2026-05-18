@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Check } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import procleanImg from "@/assets/proclean-stj.png";
 import alloNuisibleImg from "@/assets/allo-nuisible.png";

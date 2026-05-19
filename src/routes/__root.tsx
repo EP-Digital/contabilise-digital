@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Devenez Partenaire EP Digital X – Agence Web & Marketing à C" },
+      { name: "description", content: "Rejoignez le programme partenaire d'EP Digital X et gagnez 150€ à 300€ par mission. Agence web & marketing digital basée à Caen – un échange de 20 min suffit." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Devenez Partenaire EP Digital X – Agence Web & Marketing à C" },
+      { property: "og:description", content: "Rejoignez le programme partenaire d'EP Digital X et gagnez 150€ à 300€ par mission. Agence web & marketing digital basée à Caen – un échange de 20 min suffit." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Devenez Partenaire EP Digital X – Agence Web & Marketing à C" },
+      { name: "twitter:description", content: "Rejoignez le programme partenaire d'EP Digital X et gagnez 150€ à 300€ par mission. Agence web & marketing digital basée à Caen – un échange de 20 min suffit." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/51237a1a-26f2-41c9-9b00-6ed9962488cc" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/51237a1a-26f2-41c9-9b00-6ed9962488cc" },
     ],
     links: [
       {

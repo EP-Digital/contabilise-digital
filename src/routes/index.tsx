@@ -163,14 +163,20 @@ function Founders() {
             loading="lazy"
           />
         </div>
-        <div>
+        <div className="space-y-5">
           <div className="inline-flex items-center gap-3 rounded-full bg-white border border-[#E8ECFF] px-4 py-2 text-sm font-semibold text-ink">
             <span className="h-8 w-8 rounded-full bg-brand text-white flex items-center justify-center text-xs font-bold">
               D&amp;G
             </span>
             Daniel &amp; Géraldine — Fondateurs
           </div>
-          <p className="mt-6 text-[16px] text-slate leading-relaxed">
+          <div className="inline-flex items-center gap-3 rounded-full bg-white border border-[#E8ECFF] px-4 py-2 text-sm font-semibold text-ink">
+            <span className="h-8 w-8 rounded-full bg-[#10B981] text-white flex items-center justify-center text-xs font-bold">
+              R
+            </span>
+            Robin — Chef de projet
+          </div>
+          <p className="text-[16px] text-slate leading-relaxed">
             Un interlocuteur direct, pas de service intermédiaire. Vous échangez avec les
             personnes qui pilotent réellement la mission de votre client : audit, recommandation,
             production et suivi.
@@ -179,9 +185,9 @@ function Founders() {
             href={BOOK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3.5 text-sm font-medium text-white shadow-brand transition hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3.5 text-sm font-medium text-white shadow-brand transition hover:brightness-110"
           >
-            Échanger avec Daniel &amp; Géraldine <span aria-hidden>→</span>
+            Échanger avec l'équipe <span aria-hidden>→</span>
           </a>
         </div>
       </div>

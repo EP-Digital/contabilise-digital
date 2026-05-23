@@ -81,9 +81,53 @@ function Navbar() {
   );
 }
 
+function ProofBadge({
+  icon,
+  value,
+  label,
+  detail,
+  className = "",
+  style,
+}: {
+  icon: "google" | "users" | "map" | "shield";
+  value: string;
+  label: string;
+  detail: string;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <div
+      className={`group rounded-xl border border-[#E8ECFF] bg-white/95 backdrop-blur px-3.5 py-3 shadow-brand-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-brand ${className}`}
+      style={style}
+    >
+      <div className="flex items-center gap-2.5">
+        {icon === "google" ? (
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#E8ECFF] bg-white shrink-0">
+            <img src={googleBusinessLogo} alt="Google" className="h-6 w-6 object-contain" />
+          </span>
+        ) : (
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-soft text-brand shrink-0 transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+            {icon === "users" && <Users className="h-4 w-4" />}
+            {icon === "map" && <MapPin className="h-4 w-4" />}
+            {icon === "shield" && <ShieldCheck className="h-4 w-4" />}
+          </span>
+        )}
+        <div className="min-w-0">
+          <div className="flex items-baseline gap-1.5">
+            <p className="text-base font-extrabold text-ink leading-none">{value}</p>
+            <p className="text-[11px] font-semibold text-brand leading-none">{label}</p>
+          </div>
+          <p className="mt-1 text-[11px] leading-snug text-slate truncate">{detail}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   return (
-    <section className="relative min-h-screen pt-[140px] pb-24 overflow-hidden">
+    <section className="relative min-h-[calc(100vh-72px)] pt-[120px] pb-20 overflow-hidden">
       <div className="absolute inset-0 hero-grid-bg" />
       <div
         className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full opacity-60"
@@ -94,115 +138,111 @@ function Hero() {
         style={{ background: "radial-gradient(circle, rgba(18,183,106,0.22), transparent 60%)" }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 grid lg:grid-cols-2 gap-14 items-center">
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-8 grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center">
         <div className="animate-fade-up">
-          <span className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1.5 text-xs font-medium text-brand">
+          <span className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3 py-1 text-[11px] font-medium text-brand">
             <span className="h-1.5 w-1.5 rounded-full bg-brand" /> Programme Partenariat — Experts-comptables
           </span>
-          <h1 className="mt-6 text-[clamp(2rem,5vw,3.25rem)] leading-[1.05] text-ink">
+          <h1 className="mt-5 text-[clamp(1.75rem,4vw,2.5rem)] leading-[1.1] text-ink">
             Recommandez un partenaire digital{" "}
             <span className="text-brand">fiable</span> à vos clients TPE/PME
           </h1>
-          <p className="mt-6 text-[18px] leading-relaxed text-slate max-w-xl">
+          <p className="mt-4 text-[15px] leading-relaxed text-slate max-w-lg">
             EP Digital X accompagne vos clients sur leur site web, leur visibilité Google et leur
             acquisition locale, avec un suivi transparent pour votre cabinet.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap gap-3">
             <a
               href={BOOK_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3.5 text-sm font-medium text-white shadow-brand transition hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-medium text-white shadow-brand transition hover:brightness-110"
             >
               Réserver un échange de 20 min <span aria-hidden>→</span>
             </a>
             <a
               href="#comment"
-              className="inline-flex items-center gap-2 rounded-xl border border-[#E8ECFF] bg-white px-6 py-3.5 text-sm font-medium text-ink transition hover:bg-brand-tint"
+              className="inline-flex items-center gap-2 rounded-xl border border-[#E8ECFF] bg-white px-5 py-3 text-sm font-medium text-ink transition hover:bg-brand-tint"
             >
               Découvrir le fonctionnement
             </a>
           </div>
-          <p className="mt-5 text-sm text-slate">
+          <p className="mt-4 text-xs text-slate">
             Sans engagement, sans quota, sans charge opérationnelle pour votre cabinet.
           </p>
         </div>
 
-        <div
-          className="animate-fade-up rounded-[20px] bg-white border border-[#E8ECFF] p-3 shadow-brand overflow-hidden"
-          style={{ animationDelay: "0.15s" }}
-        >
-          <img
-            src={heroHandshake}
-            alt="Poignée de main entre un expert-comptable et un partenaire digital, symbole d'un partenariat de confiance"
-            className="w-full h-auto rounded-[14px] object-cover bg-white"
-            width={1280}
-            height={960}
-            loading="eager"
+        {/* Image with orbiting proof badges */}
+        <div className="relative animate-fade-up" style={{ animationDelay: "0.15s" }}>
+          {/* Soft halo behind image */}
+          <div
+            className="absolute inset-6 rounded-full opacity-70 blur-2xl -z-10"
+            style={{ background: "radial-gradient(circle, rgba(7,64,249,0.18), transparent 70%)" }}
           />
-        </div>
-      </div>
-    </section>
-  );
-}
 
-function ProofStrip() {
-  const proofItems = [
-    {
-      icon: "google",
-      value: "5/5",
-      label: "sur Google",
-      detail: "249 avis 5 étoiles",
-    },
-    {
-      icon: "users",
-      value: "TPE/PME",
-      label: "accompagnées",
-      detail: "sites web, SEO local, Google Ads",
-    },
-    {
-      icon: "map",
-      value: "France",
-      label: "entière",
-      detail: "agence basée à Caen, active partout",
-    },
-    {
-      icon: "shield",
-      value: "0 charge",
-      label: "pour le cabinet",
-      detail: "vous recommandez, nous gérons",
-    },
-  ];
+          <div className="relative mx-auto max-w-[440px] rounded-[20px] bg-white border border-[#E8ECFF] p-2.5 shadow-brand overflow-hidden">
+            <img
+              src={heroHandshake}
+              alt="Poignée de main entre un expert-comptable et un partenaire digital, symbole d'un partenariat de confiance"
+              className="w-full h-auto rounded-[14px] object-cover bg-white"
+              width={1280}
+              height={960}
+              loading="eager"
+            />
+          </div>
 
-  return (
-    <section className="bg-white py-10 border-y border-[#E8ECFF]">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {proofItems.map((item) => (
-            <div
-              key={item.label}
-              className="group relative rounded-2xl border border-[#E8ECFF] bg-white p-6 shadow-brand-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-brand overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-brand scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              <div className="flex items-center gap-3">
-                {item.icon === "google" ? (
-                  <GoogleBusinessIcon />
-                ) : (
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
-                    {item.icon === "users" && <Users className="h-6 w-6" />}
-                    {item.icon === "map" && <MapPin className="h-6 w-6" />}
-                    {item.icon === "shield" && <ShieldCheck className="h-6 w-6" />}
-                  </span>
-                )}
-                {item.icon === "google" && <StarRating />}
-              </div>
-              <div className="mt-5">
-                <p className="text-[26px] font-extrabold text-ink leading-tight">{item.value}</p>
-                <p className="mt-2 text-sm font-semibold text-brand">{item.label}</p>
-                <p className="mt-1.5 text-[13px] leading-relaxed text-slate">{item.detail}</p>
-              </div>
+          {/* Orbiting proof badges - desktop only */}
+          <div className="hidden lg:block">
+            <div className="absolute -top-4 -left-10 animate-float-slow">
+              <ProofBadge
+                icon="google"
+                value="5/5"
+                label="Google"
+                detail="249 avis 5 étoiles"
+              />
             </div>
-          ))}
+            <div
+              className="absolute top-1/3 -right-12 animate-float-slow"
+              style={{ animationDelay: "0.8s" }}
+            >
+              <ProofBadge
+                icon="users"
+                value="TPE/PME"
+                label="accompagnées"
+                detail="Web, SEO, Google Ads"
+              />
+            </div>
+            <div
+              className="absolute -bottom-4 -left-12 animate-float-slow"
+              style={{ animationDelay: "1.4s" }}
+            >
+              <ProofBadge
+                icon="map"
+                value="France"
+                label="entière"
+                detail="Basée à Caen"
+              />
+            </div>
+            <div
+              className="absolute -bottom-6 -right-6 animate-float-slow"
+              style={{ animationDelay: "2s" }}
+            >
+              <ProofBadge
+                icon="shield"
+                value="0 charge"
+                label="cabinet"
+                detail="Vous recommandez, on gère"
+              />
+            </div>
+          </div>
+
+          {/* Mobile/tablet: compact grid below image */}
+          <div className="lg:hidden mt-5 grid grid-cols-2 gap-2.5">
+            <ProofBadge icon="google" value="5/5" label="Google" detail="249 avis 5 étoiles" />
+            <ProofBadge icon="users" value="TPE/PME" label="accompagnées" detail="Web, SEO, Ads" />
+            <ProofBadge icon="map" value="France" label="entière" detail="Basée à Caen" />
+            <ProofBadge icon="shield" value="0 charge" label="cabinet" detail="Vous recommandez" />
+          </div>
         </div>
       </div>
     </section>
@@ -1042,7 +1082,7 @@ function Index() {
     <main className="bg-white text-ink">
       <Navbar />
       <Hero />
-      <ProofStrip />
+      
       <TrustProtection />
       <WallOfLove />
       <Founders />

@@ -15,6 +15,7 @@ import foundersWorking from "@/assets/founders-working.jpg";
 import foundersTeam from "@/assets/founders-team.jpg";
 import partnershipIllustration from "@/assets/partnership-illustration.jpg";
 import heroHandshake from "@/assets/hero-handshake.jpg";
+import googleBusinessLogo from "@/assets/google-business-logo.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -41,14 +42,11 @@ const BOOK_URL = "https://epdigitalx.fillout.com/geraldine-rdv";
 function GoogleBusinessIcon() {
   return (
     <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[#E8ECFF] bg-white shadow-brand-sm">
-      <svg viewBox="0 0 32 32" className="h-7 w-7" aria-label="Google Business Profile">
-        <path fill="#4285F4" d="M4 13h6v15H4z" />
-        <path fill="#34A853" d="M10 13h6v15h-6z" />
-        <path fill="#FBBC05" d="M16 13h6v15h-6z" />
-        <path fill="#EA4335" d="M22 13h6v15h-6z" />
-        <path fill="#4285F4" d="M6 4h20l2 9H4z" />
-        <path fill="#fff" d="M12 20h8v8h-8z" opacity="0.9" />
-      </svg>
+      <img
+        src={googleBusinessLogo}
+        alt="Google My Business"
+        className="h-9 w-9 object-contain"
+      />
     </span>
   );
 }

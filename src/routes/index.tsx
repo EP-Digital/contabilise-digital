@@ -120,6 +120,50 @@ function Hero() {
   );
 }
 
+function ProofStrip() {
+  const proofItems = [
+    {
+      value: "5,0/5",
+      label: "sur Google",
+      detail: "des dizaines d'avis vérifiés",
+    },
+    {
+      value: "TPE/PME",
+      label: "accompagnées",
+      detail: "sites web, SEO local, Google Ads",
+    },
+    {
+      value: "France",
+      label: "entière",
+      detail: "agence basée à Caen, active partout",
+    },
+    {
+      value: "0 charge",
+      label: "pour le cabinet",
+      detail: "vous recommandez, nous gérons",
+    },
+  ];
+
+  return (
+    <section className="bg-white py-10 border-y border-[#E8ECFF]">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {proofItems.map((item) => (
+            <div
+              key={item.label}
+              className="rounded-xl border border-[#E8ECFF] bg-white px-5 py-4 shadow-brand-sm"
+            >
+              <p className="text-2xl font-extrabold text-ink">{item.value}</p>
+              <p className="mt-1 text-sm font-semibold text-brand">{item.label}</p>
+              <p className="mt-1 text-[13px] leading-relaxed text-slate">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function TrustProtection() {
   const points = [
     "Vous recommandez uniquement si le besoin est pertinent",
@@ -162,7 +206,7 @@ function Founders() {
           <img
             src={foundersTeam}
             alt="Daniel et Géraldine, fondateurs d'EP Digital X, avec leur équipe"
-            className="w-full h-auto object-cover"
+            className="w-full aspect-[3/2] object-cover"
             loading="lazy"
           />
         </div>
@@ -953,13 +997,14 @@ function Index() {
     <main className="bg-white text-ink">
       <Navbar />
       <Hero />
+      <ProofStrip />
       <TrustProtection />
+      <WallOfLove />
       <Founders />
       <HowItWorks />
       <Remuneration />
       <References />
       <WhyUs />
-      <WallOfLove />
       <FAQ />
       <FinalCTA />
       <Footer />

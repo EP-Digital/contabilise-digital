@@ -202,7 +202,7 @@ function Hero() {
               />
             </div>
             <div
-              className="absolute top-1/3 -right-12 animate-float-slow"
+              className="absolute -top-4 -right-10 animate-float-slow"
               style={{ animationDelay: "0.8s" }}
             >
               <ProofBadge

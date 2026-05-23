@@ -1082,7 +1082,7 @@ function Index() {
     <main className="bg-white text-ink">
       <Navbar />
       <Hero />
-      <ProofStrip />
+      
       <TrustProtection />
       <WallOfLove />
       <Founders />

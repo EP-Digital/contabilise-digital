@@ -922,7 +922,7 @@ function WallOfLove() {
               </svg>
             ))}
           </div>
-          <span className="text-sm font-semibold text-ink">5,0 sur Google</span>
+          <span className="text-sm font-semibold text-ink">5/5 sur Google</span>
           <span className="text-sm text-slate">· des dizaines d'avis vérifiés</span>
         </div>
       </div>

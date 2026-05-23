@@ -150,7 +150,7 @@ function ProofStrip() {
   const proofItems = [
     {
       icon: "google",
-      value: "5,0/5",
+      value: "5/5",
       label: "sur Google",
       detail: "249 avis 5 étoiles",
     },

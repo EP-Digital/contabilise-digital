@@ -13,6 +13,7 @@ import alloNuisibleImg from "@/assets/allo-nuisible.png";
 import lesBonsBiensImg from "@/assets/les-bons-biens.png";
 import foundersWorking from "@/assets/founders-working.jpg";
 import foundersTeam from "@/assets/founders-team.jpg";
+import partnershipIllustration from "@/assets/partnership-illustration.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,

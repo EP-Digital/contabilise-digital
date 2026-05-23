@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Check } from "lucide-react";
+import { Check, MapPin, ShieldCheck, Users } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import procleanImg from "@/assets/proclean-stj.png";
 import alloNuisibleImg from "@/assets/allo-nuisible.png";
@@ -38,32 +38,29 @@ export const Route = createFileRoute("/")({
 
 const BOOK_URL = "https://epdigitalx.fillout.com/geraldine-rdv";
 
-function GoogleBusinessProof() {
+function GoogleBusinessIcon() {
   return (
-    <div className="mt-5 inline-flex max-w-full flex-wrap items-center gap-3 rounded-xl border border-[#E8ECFF] bg-white px-4 py-3 shadow-brand-sm">
-      <div className="flex items-center gap-2">
-        <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#E8ECFF] bg-white">
-          <svg viewBox="0 0 32 32" className="h-6 w-6" aria-label="Google Business Profile">
-            <path fill="#4285F4" d="M4 13h6v15H4z" />
-            <path fill="#34A853" d="M10 13h6v15h-6z" />
-            <path fill="#FBBC05" d="M16 13h6v15h-6z" />
-            <path fill="#EA4335" d="M22 13h6v15h-6z" />
-            <path fill="#4285F4" d="M6 4h20l2 9H4z" />
-            <path fill="#fff" d="M12 20h8v8h-8z" opacity="0.9" />
-          </svg>
-        </span>
-        <span className="text-sm font-semibold text-ink">Google Business Profile</span>
-      </div>
-      <div className="flex items-center gap-1" aria-label="5 etoiles sur Google">
-        {Array.from({ length: 5 }).map((_, idx) => (
-          <svg key={idx} viewBox="0 0 20 20" className="h-4 w-4 fill-[#F79009]">
-            <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1 1 5.8L10 14.77l-5.21 2.74 1-5.8-4.21-4.1 5.82-.85L10 1.5Z" />
-          </svg>
-        ))}
-      </div>
-      <p className="text-sm font-semibold text-ink">
-        249 avis 5 étoiles <span className="font-normal text-slate">sur Google</span>
-      </p>
+    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#E8ECFF] bg-white shadow-brand-sm">
+      <svg viewBox="0 0 32 32" className="h-6 w-6" aria-label="Google Business Profile">
+        <path fill="#4285F4" d="M4 13h6v15H4z" />
+        <path fill="#34A853" d="M10 13h6v15h-6z" />
+        <path fill="#FBBC05" d="M16 13h6v15h-6z" />
+        <path fill="#EA4335" d="M22 13h6v15h-6z" />
+        <path fill="#4285F4" d="M6 4h20l2 9H4z" />
+        <path fill="#fff" d="M12 20h8v8h-8z" opacity="0.9" />
+      </svg>
+    </span>
+  );
+}
+
+function StarRating() {
+  return (
+    <div className="flex items-center gap-1" aria-label="5 etoiles sur Google">
+      {Array.from({ length: 5 }).map((_, idx) => (
+        <svg key={idx} viewBox="0 0 20 20" className="h-4 w-4 fill-[#F79009]">
+          <path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1 1 5.8L10 14.77l-5.21 2.74 1-5.8-4.21-4.1 5.82-.85L10 1.5Z" />
+        </svg>
+      ))}
     </div>
   );
 }
@@ -128,7 +125,6 @@ function Hero() {
               Découvrir le fonctionnement
             </a>
           </div>
-          <GoogleBusinessProof />
           <p className="mt-5 text-sm text-slate">
             Sans engagement, sans quota, sans charge opérationnelle pour votre cabinet.
           </p>
@@ -155,21 +151,25 @@ function Hero() {
 function ProofStrip() {
   const proofItems = [
     {
+      icon: "google",
       value: "5,0/5",
       label: "sur Google",
       detail: "249 avis 5 étoiles",
     },
     {
+      icon: "users",
       value: "TPE/PME",
       label: "accompagnées",
       detail: "sites web, SEO local, Google Ads",
     },
     {
+      icon: "map",
       value: "France",
       label: "entière",
       detail: "agence basée à Caen, active partout",
     },
     {
+      icon: "shield",
       value: "0 charge",
       label: "pour le cabinet",
       detail: "vous recommandez, nous gérons",
@@ -183,9 +183,21 @@ function ProofStrip() {
           {proofItems.map((item) => (
             <div
               key={item.label}
-              className="rounded-xl border border-[#E8ECFF] bg-white px-5 py-4 shadow-brand-sm"
+              className="rounded-xl border border-[#E8ECFF] bg-white px-5 py-5 shadow-brand-sm transition hover:-translate-y-0.5 hover:shadow-brand"
             >
-              <p className="text-2xl font-extrabold text-ink">{item.value}</p>
+              <div className="flex items-start justify-between gap-4">
+                {item.icon === "google" ? (
+                  <GoogleBusinessIcon />
+                ) : (
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                    {item.icon === "users" && <Users className="h-5 w-5" />}
+                    {item.icon === "map" && <MapPin className="h-5 w-5" />}
+                    {item.icon === "shield" && <ShieldCheck className="h-5 w-5" />}
+                  </span>
+                )}
+                {item.icon === "google" && <StarRating />}
+              </div>
+              <p className="mt-4 text-2xl font-extrabold text-ink">{item.value}</p>
               <p className="mt-1 text-sm font-semibold text-brand">{item.label}</p>
               <p className="mt-1 text-[13px] leading-relaxed text-slate">{item.detail}</p>
             </div>

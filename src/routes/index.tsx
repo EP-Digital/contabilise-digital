@@ -150,7 +150,7 @@ function ProofStrip() {
   const proofItems = [
     {
       icon: "google",
-      value: "5,0/5",
+      value: "5/5",
       label: "sur Google",
       detail: "249 avis 5 étoiles",
     },
@@ -922,7 +922,7 @@ function WallOfLove() {
               </svg>
             ))}
           </div>
-          <span className="text-sm font-semibold text-ink">5,0 sur Google</span>
+          <span className="text-sm font-semibold text-ink">5/5 sur Google</span>
           <span className="text-sm text-slate">· des dizaines d'avis vérifiés</span>
         </div>
       </div>

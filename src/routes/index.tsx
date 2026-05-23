@@ -108,9 +108,9 @@ function ProofBadge({
           </span>
         ) : (
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-soft text-brand shrink-0 transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
-            {icon === "users" && <Users className="h-4.5 w-4.5" />}
-            {icon === "map" && <MapPin className="h-4.5 w-4.5" />}
-            {icon === "shield" && <ShieldCheck className="h-4.5 w-4.5" />}
+            {icon === "users" && <Users className="h-4 w-4" />}
+            {icon === "map" && <MapPin className="h-4 w-4" />}
+            {icon === "shield" && <ShieldCheck className="h-4 w-4" />}
           </span>
         )}
         <div className="min-w-0">

@@ -11,6 +11,8 @@ import { Logo } from "@/components/Logo";
 import procleanImg from "@/assets/proclean-stj.png";
 import alloNuisibleImg from "@/assets/allo-nuisible.png";
 import lesBonsBiensImg from "@/assets/les-bons-biens.png";
+import foundersWorking from "@/assets/founders-working.jpg";
+import foundersTeam from "@/assets/founders-team.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -68,76 +70,122 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 grid lg:grid-cols-2 gap-14 items-center">
         <div className="animate-fade-up">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1.5 text-xs font-medium text-brand">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand" /> Programme Partenariat Digital X
+            <span className="h-1.5 w-1.5 rounded-full bg-brand" /> Programme Partenariat — Experts-comptables
           </span>
           <h1 className="mt-6 text-[clamp(2rem,5vw,3.25rem)] leading-[1.05] text-ink">
-            Vos clients ont besoin du digital.
-            <br />
-            Vous avez la <span className="text-brand">réponse.</span>
+            Recommandez un partenaire digital{" "}
+            <span className="text-brand">fiable</span> à vos clients TPE/PME
           </h1>
           <p className="mt-6 text-[18px] leading-relaxed text-slate max-w-xl">
-            En travaillant avec nous, vous devenez le conseiller digital de référence pour vos
-            clients TPE/PME — et vous êtes rémunéré à chaque mission signée.
+            EP Digital X accompagne vos clients sur leur site web, leur visibilité Google et leur
+            acquisition locale, avec un suivi transparent pour votre cabinet.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a
-              href="#comment"
+              href={BOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3.5 text-sm font-medium text-white shadow-brand transition hover:brightness-110"
             >
-              Découvrir le partenariat <span aria-hidden>→</span>
+              Réserver un échange de 20 min <span aria-hidden>→</span>
             </a>
             <a
               href="#comment"
               className="inline-flex items-center gap-2 rounded-xl border border-[#E8ECFF] bg-white px-6 py-3.5 text-sm font-medium text-ink transition hover:bg-brand-tint"
             >
-              Comment ça marche
+              Découvrir le fonctionnement
             </a>
           </div>
+          <p className="mt-5 text-sm text-slate">
+            Sans engagement, sans quota, sans charge opérationnelle pour votre cabinet.
+          </p>
         </div>
 
         <div
-          className="animate-fade-up rounded-[20px] bg-white border border-[#E8ECFF] p-7 shadow-brand"
+          className="animate-fade-up rounded-[20px] bg-white border border-[#E8ECFF] p-3 shadow-brand overflow-hidden"
           style={{ animationDelay: "0.15s" }}
         >
-          <p className="text-[12px] font-semibold uppercase tracking-wider text-slate">
-            Ce que vous apportez à vos clients
-          </p>
-          <div className="mt-6 space-y-5">
-            {[
-              {
-                icon: "🌐",
-                title: "Sites web",
-                desc: "Création & refonte professionnelle, livrés en 4 à 6 semaines",
-              },
-              {
-                icon: "📍",
-                title: "Référencement local",
-                desc: "Google Maps, SEO local, être trouvé par les bons clients",
-              },
-              {
-                icon: "📣",
-                title: "Google Ads",
-                desc: "Campagnes pilotées pour générer des contacts qualifiés rapidement",
-              },
-            ].map((s) => (
-              <div key={s.title} className="flex gap-4">
-                <div className="flex-none h-11 w-11 rounded-xl bg-brand-soft flex items-center justify-center text-xl">
-                  {s.icon}
-                </div>
-                <div>
-                  <h3 className="text-[15px] font-bold text-ink">{s.title}</h3>
-                  <p className="mt-0.5 text-sm text-slate leading-relaxed">{s.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-7 rounded-xl bg-success-bg px-4 py-3.5 text-sm font-medium text-ink">
-            <span className="text-success mr-1.5">✅</span>
-            Aucun effort de votre part. Vous recommandez, nous livrons.
-          </div>
+          <img
+            src={foundersWorking}
+            alt="Daniel et Géraldine, fondateurs d'EP Digital X, en discussion avec un client"
+            className="w-full h-auto rounded-[14px] object-cover"
+            loading="eager"
+          />
         </div>
       </div>
     </section>
+  );
+}
+
+function TrustProtection() {
+  const points = [
+    "Vous recommandez uniquement si le besoin est pertinent",
+    "Nous qualifions la demande avant toute proposition",
+    "Vous êtes informé des étapes importantes",
+    "Aucune pression commerciale sur votre client",
+  ];
+  return (
+    <Section
+      bg="white"
+      label="Confiance & cadre"
+      title="Votre relation client reste protégée"
+      subtitle="Recommander un prestataire engage votre image. C'est pourquoi notre fonctionnement est conçu pour être simple, transparent et sans pression commerciale."
+    >
+      <div className="grid sm:grid-cols-2 gap-4 max-w-4xl">
+        {points.map((p) => (
+          <div
+            key={p}
+            className="flex items-start gap-3 rounded-xl border border-[#E8ECFF] bg-white p-5"
+          >
+            <Check className="text-brand w-5 h-5 mt-0.5 flex-shrink-0" />
+            <p className="text-[15px] text-ink leading-relaxed">{p}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function Founders() {
+  return (
+    <Section
+      bg="alt"
+      label="Vos contacts"
+      title="Vos contacts chez EP Digital X"
+      subtitle="Daniel & Géraldine, fondateurs d'EP Digital X, accompagnent les TPE/PME sur leur visibilité digitale : site web, référencement local, Google Ads et stratégie d'acquisition."
+    >
+      <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="rounded-2xl overflow-hidden border border-[#E8ECFF] bg-white shadow-brand-sm">
+          <img
+            src={foundersTeam}
+            alt="Daniel et Géraldine, fondateurs d'EP Digital X, avec leur équipe"
+            className="w-full h-auto object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <div className="inline-flex items-center gap-3 rounded-full bg-white border border-[#E8ECFF] px-4 py-2 text-sm font-semibold text-ink">
+            <span className="h-8 w-8 rounded-full bg-brand text-white flex items-center justify-center text-xs font-bold">
+              D&amp;G
+            </span>
+            Daniel &amp; Géraldine — Fondateurs
+          </div>
+          <p className="mt-6 text-[16px] text-slate leading-relaxed">
+            Un interlocuteur direct, pas de service intermédiaire. Vous échangez avec les
+            personnes qui pilotent réellement la mission de votre client : audit, recommandation,
+            production et suivi.
+          </p>
+          <a
+            href={BOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3.5 text-sm font-medium text-white shadow-brand transition hover:brightness-110"
+          >
+            Échanger avec Daniel &amp; Géraldine <span aria-hidden>→</span>
+          </a>
+        </div>
+      </div>
+    </Section>
   );
 }
 
@@ -227,9 +275,9 @@ function HowItWorks() {
 function Remuneration() {
   return (
     <Section
-      label="Votre rémunération"
-      title="Vous choisissez la formule qui vous convient"
-      subtitle="Deux options pensées pour s'adapter à votre logique cabinet."
+      label="Contrepartie"
+      title="Une contrepartie transparente si la mission est signée"
+      subtitle="Le partenariat reste simple : si votre recommandation aboutit à une mission signée, vous bénéficiez d'une contrepartie claire. Tout est annoncé dès le départ, sans engagement ni exclusivité."
     >
       <div className="grid md:grid-cols-2 gap-6 items-stretch">
         {/* Featured */}
@@ -787,36 +835,28 @@ function WallOfLove() {
 function FAQ() {
   const items = [
     {
-      q: "Est-ce que je dois m'occuper du suivi des clients que je vous envoie ?",
-      a: "Non, aucunement. Votre rôle s'arrête à la recommandation. Nous prenons en charge l'ensemble du processus : audit, devis, réalisation, suivi. Vous n'avez rien à gérer.",
+      q: "Est-ce compatible avec mon rôle d'expert-comptable ?",
+      a: "Vous restez libre de recommander uniquement lorsque le besoin est pertinent. Le partenariat n'implique aucune obligation, aucun quota et aucune exclusivité.",
     },
     {
-      q: "Combien puis-je espérer gagner avec ce partenariat ?",
-      a: "La rémunération varie selon les missions signées. En moyenne, nos partenaires actifs génèrent entre 500 € et 2 000 € par mois selon le volume de clients recommandés. Tout est transparent et contractualisé.",
+      q: "Est-ce que je garde la main sur la relation client ?",
+      a: "Oui. Nous intervenons uniquement sur le besoin digital transmis. Votre relation avec votre client reste au centre, et nous vous tenons informé des étapes importantes.",
     },
     {
-      q: "Y a-t-il un engagement ou une exclusivité ?",
-      a: "Aucun contrat d'exclusivité, aucun engagement de durée. Vous recommandez quand vous le souhaitez, à qui vous le souhaitez. La relation reste simple et sans contrainte.",
+      q: "Est-ce que vous contactez mon client sans mon accord ?",
+      a: "Non. Le premier contact se fait uniquement après une mise en relation ou un accord clair de votre part.",
     },
     {
-      q: "Quels types de clients peuvent bénéficier de vos services ?",
-      a: "Nous travaillons exclusivement avec des TPE et PME locales : artisans, commerçants, professions libérales, restaurants, etc. Si votre client a besoin d'un site web, d'être trouvé sur Google ou d'attirer plus de clients en ligne, nous pouvons l'aider.",
+      q: "Que se passe-t-il si mon client n'est pas intéressé ?",
+      a: "Rien. Il n'y a aucune pression commerciale. Si le besoin n'est pas prioritaire, nous arrêtons simplement l'échange.",
     },
     {
-      q: "En combien de temps un site est-il livré ?",
-      a: "Nos sites sont livrés en 4 à 6 semaines à partir de la validation du devis. Nous respectons les délais annoncés — c'est un engagement que nous prenons auprès de chaque client.",
+      q: "Est-ce que je dois gérer le projet digital ?",
+      a: "Non. EP Digital X prend le relais : diagnostic, recommandation, devis, production et suivi.",
     },
     {
-      q: "Comment se passe le premier contact avec mon client ?",
-      a: "Il vous suffit de nous transmettre le nom et le contact de votre client (email ou téléphone). Nous prenons contact dans les 48h pour un audit gratuit et un devis sans engagement.",
-    },
-    {
-      q: "Est-ce que vous travaillez uniquement sur Caen ?",
-      a: "Nous sommes basés à Caen mais intervenons sur toute la Normandie et au-delà pour les projets de création de site web et référencement local. N'hésitez pas à nous soumettre un projet où qu'il soit.",
-    },
-    {
-      q: "Comment devenir partenaire ?",
-      a: "C'est simple : réservez un échange de 20 minutes avec nous via le bouton en haut de page. On vous explique tout, on répond à vos questions, et si ça vous convient, on démarre immédiatement.",
+      q: "Travaillez-vous uniquement à Caen ou en Normandie ?",
+      a: "Notre agence est basée à Caen, mais nous accompagnons des TPE/PME partout en France.",
     },
   ];
 
@@ -824,9 +864,9 @@ function FAQ() {
     <Section
       id="faq"
       bg="soft"
-      label="FAQ"
-      title={<>Vos questions, nos réponses</>}
-      subtitle="Tout ce que vous devez savoir avant de devenir partenaire."
+      label="Questions sensibles"
+      title={<>Les questions que vous pouvez légitimement vous poser</>}
+      subtitle="Les points sur lesquels un expert-comptable a besoin d'être rassuré avant de recommander un prestataire."
     >
       <div className="mx-auto max-w-3xl">
         <Accordion type="single" collapsible className="space-y-3">
@@ -862,11 +902,12 @@ function FinalCTA() {
       />
       <div className="relative mx-auto max-w-3xl px-5 sm:px-8 text-center">
         <h2 className="text-white text-[clamp(1.875rem,4.5vw,2.75rem)] leading-tight">
-          Prêt à devenir <span style={{ color: "#7B9FFF" }}>partenaire digital de référence</span>{" "}
-          pour vos clients ?
+          Vous voulez vérifier si le partenariat peut{" "}
+          <span style={{ color: "#7B9FFF" }}>convenir à votre cabinet</span> ?
         </h2>
         <p className="mt-5 text-[17px]" style={{ color: "rgba(255,255,255,0.6)" }}>
-          Un échange de 20 minutes suffit pour voir si le partenariat vous correspond.
+          Un échange de 20 minutes suffit pour comprendre le fonctionnement, poser vos questions
+          et voir si le partenariat est pertinent.
         </p>
         <a
           href={BOOK_URL}
@@ -874,7 +915,7 @@ function FinalCTA() {
           rel="noopener noreferrer"
           className="mt-9 inline-flex items-center gap-2 rounded-xl bg-brand px-9 py-[18px] text-sm font-semibold text-white shadow-brand transition hover:brightness-110"
         >
-          📅 Réserver un échange gratuit
+          📅 Réserver un échange avec Daniel &amp; Géraldine
         </a>
       </div>
     </section>
@@ -890,7 +931,7 @@ function Footer() {
       >
         <Logo variant="dark" />
         <p className="text-center text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>
-          © 2025 EP Digital X · Agence web & marketing digital · Caen, Normandie
+          © 2025 EP Digital X · Agence web &amp; marketing digital basée à Caen · Active partout en France
         </p>
         <div className="hidden md:block w-[140px]" />
       </div>
@@ -903,6 +944,8 @@ function Index() {
     <main className="bg-white text-ink">
       <Navbar />
       <Hero />
+      <TrustProtection />
+      <Founders />
       <HowItWorks />
       <Remuneration />
       <References />

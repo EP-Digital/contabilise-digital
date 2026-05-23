@@ -14,6 +14,7 @@ import lesBonsBiensImg from "@/assets/les-bons-biens.png";
 import foundersWorking from "@/assets/founders-working.jpg";
 import foundersTeam from "@/assets/founders-team.jpg";
 import partnershipIllustration from "@/assets/partnership-illustration.jpg";
+import heroHandshake from "@/assets/hero-handshake.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -107,8 +108,8 @@ function Hero() {
           style={{ animationDelay: "0.15s" }}
         >
           <img
-            src={partnershipIllustration}
-            alt="Illustration d'un partenariat digital : expert-comptable et agence connectés autour d'un graphique de croissance, SEO, site web et visibilité locale"
+            src={heroHandshake}
+            alt="Poignée de main entre un expert-comptable et un partenaire digital, symbole d'un partenariat de confiance"
             className="w-full h-auto rounded-[14px] object-cover bg-white"
             width={1280}
             height={960}

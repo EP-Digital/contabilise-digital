@@ -40,8 +40,8 @@ const BOOK_URL = "https://epdigitalx.fillout.com/geraldine-rdv";
 
 function GoogleBusinessIcon() {
   return (
-    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#E8ECFF] bg-white shadow-brand-sm">
-      <svg viewBox="0 0 32 32" className="h-6 w-6" aria-label="Google Business Profile">
+    <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[#E8ECFF] bg-white shadow-brand-sm">
+      <svg viewBox="0 0 32 32" className="h-7 w-7" aria-label="Google Business Profile">
         <path fill="#4285F4" d="M4 13h6v15H4z" />
         <path fill="#34A853" d="M10 13h6v15h-6z" />
         <path fill="#FBBC05" d="M16 13h6v15h-6z" />
@@ -183,23 +183,26 @@ function ProofStrip() {
           {proofItems.map((item) => (
             <div
               key={item.label}
-              className="rounded-xl border border-[#E8ECFF] bg-white px-5 py-5 shadow-brand-sm transition hover:-translate-y-0.5 hover:shadow-brand"
+              className="group relative rounded-2xl border border-[#E8ECFF] bg-white p-6 shadow-brand-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-brand overflow-hidden"
             >
-              <div className="flex items-start justify-between gap-4">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-brand scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div className="flex items-center gap-3">
                 {item.icon === "google" ? (
                   <GoogleBusinessIcon />
                 ) : (
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-soft text-brand">
-                    {item.icon === "users" && <Users className="h-5 w-5" />}
-                    {item.icon === "map" && <MapPin className="h-5 w-5" />}
-                    {item.icon === "shield" && <ShieldCheck className="h-5 w-5" />}
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+                    {item.icon === "users" && <Users className="h-6 w-6" />}
+                    {item.icon === "map" && <MapPin className="h-6 w-6" />}
+                    {item.icon === "shield" && <ShieldCheck className="h-6 w-6" />}
                   </span>
                 )}
                 {item.icon === "google" && <StarRating />}
               </div>
-              <p className="mt-4 text-2xl font-extrabold text-ink">{item.value}</p>
-              <p className="mt-1 text-sm font-semibold text-brand">{item.label}</p>
-              <p className="mt-1 text-[13px] leading-relaxed text-slate">{item.detail}</p>
+              <div className="mt-5">
+                <p className="text-[26px] font-extrabold text-ink leading-tight">{item.value}</p>
+                <p className="mt-2 text-sm font-semibold text-brand">{item.label}</p>
+                <p className="mt-1.5 text-[13px] leading-relaxed text-slate">{item.detail}</p>
+              </div>
             </div>
           ))}
         </div>

@@ -107,9 +107,11 @@ function Hero() {
           style={{ animationDelay: "0.15s" }}
         >
           <img
-            src={foundersWorking}
-            alt="Daniel et Géraldine, fondateurs d'EP Digital X, en discussion avec un client"
-            className="w-full h-auto rounded-[14px] object-cover"
+            src={partnershipIllustration}
+            alt="Illustration d'un partenariat digital : expert-comptable et agence connectés autour d'un graphique de croissance, SEO, site web et visibilité locale"
+            className="w-full h-auto rounded-[14px] object-cover bg-white"
+            width={1280}
+            height={960}
             loading="eager"
           />
         </div>
